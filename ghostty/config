@@ -13,7 +13,7 @@ cursor-style-blink = false
 theme="Dracula"
 background-opacity=0.9
 bold-is-bright=true
-title="Promptus Maximus"
+title="Promptus Brutus"
 
 # Shell Integrations
 shell-integration = zsh
