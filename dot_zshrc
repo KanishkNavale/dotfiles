@@ -123,5 +123,5 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/bin
 
 # Aliases
-alias ls="ls --color"
+alias ls="eza --color=always --long --git --no-user --icons=always"
 alias upup="sudo nala update && sudo nala upgrade -y"
