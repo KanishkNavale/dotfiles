@@ -35,15 +35,11 @@ prequisites(){
 
 update_shell(){
     echo_info "Changing default shell to zsh ..."
-    chsh -s $(which zsh)
-
-    echo_done
+    chsh -s $(which zsh) $USER
 
     echo_info "Updating .zshrc file ..."
-    if [ -f "$HOME/.zshrc" ]; then
-        rm -rf $HOME/.zshrc
-    fi
-    ln -s .zshrc $HOME/.zshrc
+    rm -rf $HOME/.zshrc
+    ln -s $(pwd)/.zshrc $HOME/.zshrc
 
     echo_done
 }
@@ -81,10 +77,8 @@ oh_my_zsh(){
     fi
 
     echo_info "Updating .p10k.zsh file ..."
-    if [ -f "$HOME/.p10k.zsh" ]; then
-        rm -rf $HOME/.p10k.zsh
-    fi
-    ln -s .p10k.zsh $HOME/.p10k.zsh
+    sudo rm -rf $HOME/.p10k.zsh
+    ln -s $(pwd)/.p10k.zsh $HOME/.p10k.zsh
 
     echo_done
 }
@@ -104,10 +98,8 @@ ghostty(){
     rm ghostty_1.0.1-0.ppa1_amd64_${VERSION_ID}.deb
 
     echo_info "Updating Ghostty configuration ..."
-    if [ -d "~/.config/ghostty" ]; then
-        sudo rm -rf ~/.config/ghostty
-    fi
-    ln -s ghostty ~/.config/
+    sudo rm -rf $HOME/.config/ghostty
+    ln -s $(pwd)/ghostty $HOME/.config/ghostty
 
     echo_done
 }
