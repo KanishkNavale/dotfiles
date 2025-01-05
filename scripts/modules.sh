@@ -14,10 +14,10 @@ echo_done() {
 
 prequisites(){
     echo_info "Installing prequisites ..."
-    sudo apt-get update && sudo apt-get upgrade -y
 
+    sudo apt-get update && sudo apt-get upgrade -y
     sudo apt-get install software-properties-common snapd nala -y
-    
+
     sudo nala install -y \
     python3-venv \
     python3-pip \
@@ -30,7 +30,7 @@ prequisites(){
     htop &> /dev/null
 
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf &> /dev/null
-    ~/.fzf/install --all &> /dev/null
+    $HOME/.fzf/install --all &> /dev/null
 
     echo_done
 }
@@ -50,6 +50,8 @@ fonts (){
     echo_info "Installing fonts ..."
     sudo cp fonts/* /usr/share/fonts/ &> /dev/null
     sudo fc-cache -fv &> /dev/null
+
+    echo_done
 }
 
 oh_my_zsh(){

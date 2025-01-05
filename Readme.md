@@ -26,7 +26,7 @@ This repository installs prerequisites & migrates dotfiles for machine personifi
 - Visual Studio Code
 - Ghostty
 
-## 2. Configuration Replication
+## 2. Configuration Replications
 
 - ".zshrc"
 - ".p10k.zsh"
