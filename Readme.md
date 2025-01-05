@@ -31,6 +31,7 @@ This repository installs prerequisites & migrates dotfiles for machine personifi
 - ".zshrc"
 - ".p10k.zsh"
 - "ghostty/config"
+- ".gitconfig"
 
 ## 3. Actions
 

@@ -16,9 +16,8 @@ prequisites(){
     echo_info "Installing prequisites ..."
     sudo apt-get update && sudo apt-get upgrade -y
 
-    sudo apt-get install software-properties-common -y
-    sudo apt-get install nala -y
-
+    sudo apt-get install software-properties-common snapd nala -y
+    
     sudo nala install -y \
     python3-venv \
     python3-pip \
@@ -28,7 +27,8 @@ prequisites(){
     curl \
     fzf \
     zsh \
-    vim
+    vim \
+    htop &> /dev/null
 
     echo_done
 }
@@ -46,8 +46,8 @@ update_shell(){
 
 fonts (){
     echo_info "Installing fonts ..."
-    sudo cp fonts/* /usr/share/fonts/
-    sudo fc-cache -fv
+    sudo cp fonts/* /usr/share/fonts/ &> /dev/null
+    sudo fc-cache -fv &> /dev/null
 }
 
 oh_my_zsh(){
@@ -100,6 +100,14 @@ ghostty(){
     echo_info "Updating Ghostty configuration ..."
     sudo rm -rf $HOME/.config/ghostty
     ln -s $(pwd)/ghostty $HOME/.config/ghostty
+
+    echo_done
+}
+
+migrate_git(){
+    echo_info "Migrating git configuration ..."
+    sudo rm -rf $HOME/.gitconfig
+    ln -s $(pwd)/.gitconfig $HOME/.gitconfig
 
     echo_done
 }
