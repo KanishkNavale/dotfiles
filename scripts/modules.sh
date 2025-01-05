@@ -111,3 +111,13 @@ migrate_git(){
 
     echo_done
 }
+
+migrate_secrets(){
+    echo_info "Decrypting Secrets ..."
+    gpg secrets.sh.gpg
+
+    sudo rm -rf $HOME/secrets.sh
+    ln -s $(pwd)/secrets.sh $HOME/secrets.sh
+
+    echo_done
+}

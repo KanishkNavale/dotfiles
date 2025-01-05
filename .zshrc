@@ -124,5 +124,9 @@ export PATH=$PATH:/usr/local/bin
 
 # Aliases
 alias ls="eza --color=always --long --git --no-user --icons=always"
+alias la="ls -la"
 alias upup="sudo nala update && sudo nala upgrade -y"
 alias git_amend="git add . && git commit --amend --no-edit && git push -f"
+
+# App. Keys
+source $HOME/secrets.sh

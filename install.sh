@@ -9,3 +9,4 @@ oh_my_zsh
 vscode
 ghostty
 migrate_git
+migrate_secrets
