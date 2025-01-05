@@ -120,13 +120,19 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Paths
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/bin:/usr/local/bin
+
+# Shell Intergrations
+## 1. fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # Aliases
 alias ls="eza --color=always --long --git --no-user --icons=always"
 alias la="ls -la"
 alias upup="sudo nala update && sudo nala upgrade -y"
 alias git_amend="git add . && git commit --amend --no-edit && git push -f"
+alias fzf="fzf --preview 'cat {}'"
 
 # App. Keys
 source $HOME/secrets.sh
