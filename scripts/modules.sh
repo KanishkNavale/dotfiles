@@ -46,7 +46,7 @@ update_shell(){
     echo_done
 }
 
-fonts (){
+migrate_fonts(){
     echo_info "Installing fonts ..."
     sudo cp fonts/* /usr/share/fonts/ &> /dev/null
     sudo fc-cache -fv &> /dev/null
@@ -54,7 +54,7 @@ fonts (){
     echo_done
 }
 
-oh_my_zsh(){
+migrate_omz(){
     ZSH_CUSTOM_PATH="$HOME/.oh-my-zsh/custom"
 
     echo_info "Installing oh-my-zsh ..."
@@ -87,14 +87,14 @@ oh_my_zsh(){
     echo_done
 }
 
-vscode(){
+migrate_vscode(){
     echo_info "Installing Visual Studio Code ..."
     sudo snap install code --classic
 
     echo_done
 }
 
-ghostty(){
+migrate_ghostty(){
     echo_info "Installing Ghostty ..."
     source /etc/os-release
     curl -L -O "https://github.com/mkasberg/ghostty-ubuntu/releases/download/1.0.1-0-ppa1/ghostty_1.0.1-0.ppa1_amd64_${VERSION_ID}.deb"
@@ -107,6 +107,15 @@ ghostty(){
 
     echo_done
 }
+
+migrate_helix(){
+    echo_info "Installing Helix ..."
+    sudo snap install helix --classic
+
+    sudo rm -rf $HOME/.config/helix    
+    ln -s $(pwd)/helix $HOME/.config/helix
+}
+
 
 migrate_git(){
     echo_info "Migrating git configuration ..."

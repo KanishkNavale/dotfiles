@@ -133,6 +133,7 @@ alias la="ls -la"
 alias upup="sudo nala update && sudo nala upgrade -y"
 alias git_amend="git add . && git commit --amend --no-edit && git push -f"
 alias fzf="fzf --preview 'cat {}'"
+alias vim="hx"
 
 # App. Keys
 source $HOME/secrets.sh

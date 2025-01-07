@@ -5,8 +5,9 @@ source scripts/modules.sh
 prequisites
 migrate_git
 migrate_secrets
-update_shell
-fonts
-oh_my_zsh
-vscode
-ghostty
+migrate_update_shell
+migrate_fonts
+migrate_omz
+migrate_vscode
+migrate_ghostty
+migrate_helix
