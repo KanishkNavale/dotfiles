@@ -1,2 +1,3 @@
 *.deb
+helix/runtime/grammars
 secrets.sh

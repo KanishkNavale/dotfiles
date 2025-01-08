@@ -110,7 +110,11 @@ migrate_ghostty(){
 
 migrate_helix(){
     echo_info "Installing Helix ..."
-    sudo snap install helix --classic
+    sudo add-apt-repository ppa:maveonair/helix-editor
+    sudo apt update
+    sudo apt install helix
+
+    hx --grammar fetch && hx --grammar build &> /dev/null
 
     sudo rm -rf $HOME/.config/helix    
     ln -s $(pwd)/helix $HOME/.config/helix
