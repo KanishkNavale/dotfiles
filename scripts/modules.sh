@@ -35,7 +35,7 @@ prequisites(){
     echo_done
 }
 
-update_shell(){
+migrate_shell(){
     echo_info "Changing default shell to zsh ..."
     chsh -s $(which zsh) $USER
 
@@ -108,19 +108,6 @@ migrate_ghostty(){
     echo_done
 }
 
-migrate_helix(){
-    echo_info "Installing Helix ..."
-    sudo add-apt-repository ppa:maveonair/helix-editor
-    sudo apt update
-    sudo apt install helix
-
-    hx --grammar fetch && hx --grammar build &> /dev/null
-
-    sudo rm -rf $HOME/.config/helix    
-    ln -s $(pwd)/helix $HOME/.config/helix
-}
-
-
 migrate_git(){
     echo_info "Migrating git configuration ..."
     sudo rm -rf $HOME/.gitconfig
@@ -134,7 +121,7 @@ migrate_secrets(){
     gpg secrets.sh.gpg
 
     sudo rm -rf $HOME/secrets.sh
-    ln -s $(pwd)/secrets.sh $HOME/secrets.sh
+    ln -s $(pwd)/secrets.sh $HOME/.secrets.sh
 
     echo_done
 }
