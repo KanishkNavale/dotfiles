@@ -10,3 +10,4 @@ migrate_fonts
 migrate_omz
 migrate_vscode
 migrate_ghostty
+migrate_vim

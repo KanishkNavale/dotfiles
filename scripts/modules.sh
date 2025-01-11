@@ -125,3 +125,20 @@ migrate_secrets(){
 
     echo_done
 }
+
+migrate_vim(){
+    echo_info "Migrating vim configuration ..."
+    sudo rm -rf $HOME/.vim $HOME/.vimrc
+
+    mkdir -p $HOME/.vim
+    mkdir -p $HOME/.vim/backup $HOME/.vim/undo $HOME/.vim/swap
+
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+    vim +PlugInstall +qall
+
+    ln -s $(pwd)/.vimrc $HOME/.vimrc
+
+    echo_done
+}
