@@ -1,6 +1,12 @@
 " Plugins (using vim-plug)
 call plug#begin('~/.vim/plugged')
+
+" Dracula theme
 Plug 'dracula/vim', { 'as': 'dracula' }
+
+" File Explorer
+Plug 'preservim/nerdtree'
+
 call plug#end()
 
 " Basic Settings
@@ -53,3 +59,8 @@ set undofile                " Enable persistent undo
 set backup                  " Enable file backup
 set backupdir=~/.vim/backup " Directory for backup files
 set undodir=~/.vim/undo     " Directory for undo files
+
+" Keybindings for Plugins
+" NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>      " Toggle NERDTree with Ctrl+n
+autocmd VimEnter * NERDTree | wincmd p  " Open NERDTree on startup
