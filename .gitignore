@@ -1,3 +1,4 @@
 *.deb
-helix/runtime/grammars
+*.swp
+
 secrets.sh

@@ -94,19 +94,20 @@ migrate_vscode(){
     echo_done
 }
 
-migrate_ghostty(){
+migrate_ghostty() {
     echo_info "Installing Ghostty ..."
     source /etc/os-release
-    curl -L -O "https://github.com/mkasberg/ghostty-ubuntu/releases/download/1.0.1-0-ppa1/ghostty_1.0.1-0.ppa1_amd64_${VERSION_ID}.deb"
-    sudo dpkg -i ghostty_1.0.1-0.ppa1_amd64_${VERSION_ID}.deb
-    rm ghostty_1.0.1-0.ppa1_amd64_${VERSION_ID}.deb
+    curl -L -O "https://github.com/mkasberg/ghostty-ubuntu/releases/download/1.1.0-0-ppa1/ghostty_1.1.0-0.ppa1_amd64_24.04.deb"
+    sudo apt install -y ./ghostty_*.deb
+    rm ghostty_*.deb
 
     echo_info "Updating Ghostty configuration ..."
-    sudo rm -rf $HOME/.config/ghostty
-    ln -s $(pwd)/ghostty $HOME/.config/ghostty
+    sudo rm -rf "$HOME/.config/ghostty"
+    ln -s "$(pwd)/ghostty" "$HOME/.config/ghostty"
 
     echo_done
 }
+
 
 migrate_git(){
     echo_info "Migrating git configuration ..."
