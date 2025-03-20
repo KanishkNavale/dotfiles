@@ -135,6 +135,7 @@ alias git_amend="git add . && git commit --amend --no-edit && git push -f"
 alias fzf="fzf --preview 'cat {}'"
 alias sz="source ~/.zshrc"
 alias sa="source .venv/bin/activate"
+alias dcd="cd ../.."
 
 # App. Keys
 source $HOME/.secrets.sh
