@@ -1,5 +1,5 @@
 # Look and Feel
-font-family="MesloLGS NF"
+font-family="MesloLGSDZ Nerd Font Mono"
 font-style = Regular
 font-size = 10
 font-thicken = true
@@ -13,7 +13,6 @@ cursor-style-blink = false
 theme="Dracula"
 background-opacity=0.9
 bold-is-bright=true
-title="Promptus Maximus"
 
 quick-terminal-position=left
 

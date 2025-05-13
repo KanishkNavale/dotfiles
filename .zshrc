@@ -130,10 +130,9 @@ source <(fzf --zsh)
 # Aliases
 alias ls="eza --color=always --long --git --no-user --icons=always"
 alias la="ls -la"
-alias upup="sudo nala update && sudo nala upgrade -y"
+alias upup="sudo pacman -Syu --noconfirm"
 alias git_amend="git add . && git commit --amend --no-edit && git push -f"
-alias fzf="fzf --preview 'cat {}'"
-alias sz="source ~/.zshrc"
+alias ss="source ~/.zshrc"
 alias sa="source .venv/bin/activate"
 alias dcd="cd ../.."
 
