@@ -1,6 +1,6 @@
 # Dotfile Manager
 
-This repository installs prerequisites & migrates dotfiles for machine personification for Arch Linux.
+This repository installs prerequisites & migrates dotfiles for Arch Linux machine personification.
 
 > [!NOTE]
 >
