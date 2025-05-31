@@ -29,6 +29,7 @@ prequisites(){
     zsh \
     fzf \
     btop \
+    yazi \
     vim &> /dev/null
 
     echo_info "Installing AUR helper ..."
@@ -108,9 +109,9 @@ migrate_vscode(){
 
 migrate_ghostty() {
     echo_info "Installing Ghostty ..."
-    if ! command -v ghosty &> /dev/null; then
+    if ! command -v ghostty &> /dev/null; then
         echo_info "Installing Ghostty ..."
-        yay -S --noconfirm ghosty &> /dev/null
+        yay -S --noconfirm ghostty &> /dev/null
     fi
     
     echo_done

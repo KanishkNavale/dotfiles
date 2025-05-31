@@ -1,3 +1,9 @@
 [user]
 	email = navalekanishk@gmail.com
 	name = Kanishk Navale
+[pull]
+    rebase = true
+[alias]
+    famend = !git add . && git commit --amend --no-edit && git push -f
+	undo = reset --soft HEAD~1
+	amend = !git add . && git commit --amend --no-edit

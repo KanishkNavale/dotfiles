@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
 
 " Dracula theme
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'preservim/nerdtree'
 
 call plug#end()
 

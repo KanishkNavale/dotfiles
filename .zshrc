@@ -131,10 +131,20 @@ source <(fzf --zsh)
 alias ls="eza --color=always --long --git --no-user --icons=always"
 alias la="ls -la"
 alias upup="sudo pacman -Syu --noconfirm"
-alias git_amend="git add . && git commit --amend --no-edit && git push -f"
 alias ss="source ~/.zshrc"
 alias sa="source .venv/bin/activate"
-alias dcd="cd ../.."
+alias cd="z"
+alias dcd="z ../.."
+alias y="yazi"
 
 # App. Keys
 source $HOME/.secrets.sh
+
+# Custom Paths
+export EDITOR="vim"
+export PATH=/opt/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
+export PATH=$PATH:/var/lib/snapd/snap/bin
+
+# Custom Evals.
+eval "$(zoxide init zsh)"
