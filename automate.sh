@@ -147,7 +147,7 @@ migrate_vim(){
 }
 
 migrate_theme(){
-    echo_info "Migrating terminal theme ..."
+    echo_info "Migrating dracula theme ..."
     paru -S --noconfirm dracula-gtk-theme dracula-icon-theme
     gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
     gsettings set org.gnome.desktop.interface icon-theme "Dracula"
@@ -168,4 +168,24 @@ migrate_grub(){
     sudo grub-mkconfig -o /boot/grub/grub.cfg
 
     echo_done
+}
+
+migrate_docker(){
+    echo_info "Migrating Docker ..."
+    sudo pacman -S --noconfirm docker docker-compose docker-buildx nvidia-container-toolkit
+
+    echo_info "Enabling and starting Docker service..."
+    sudo systemctl enable docker.service
+    sudo systemctl start docker.service
+
+    echo_info "Configuring NVIDIA Container Toolkit..."
+    sudo nvidia-ctk runtime configure --runtime=docker
+    sudo systemctl restart docker.service
+
+    echo_info "Adding $USER to docker group..."
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+
+    echo_info "Docker installation and setup complete!"
+    echo_info "You may need to log out and back in for group changes to take effect."
 }
