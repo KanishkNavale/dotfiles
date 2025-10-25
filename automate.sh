@@ -16,13 +16,14 @@ prequisites(){
     echo_info "Installing prequisites ..."
 
     echo_info "Updating system ..."
-    sudo pacman -Syu --noconfirm &> /dev/null
+    sudo pacman -Syu --noconfirm 
 
     echo_info "Installing general prequisites ..."
-    sudo pacman -Syu --noconfirm \
-    python3-venv \
-    python3-pip \
-    python3-poetry \
+    sudo pacman -S --noconfirm \
+    python-virtualenv \
+    python-pip \
+    python-poetry \
+    python-psutil \
     eza \
     git \
     curl \
@@ -30,16 +31,19 @@ prequisites(){
     fzf \
     btop \
     yazi \
-    vim &> /dev/null
+    vim \
+    zoxide \
+    ghostty \
+    bat \
 
     echo_info "Installing AUR helper ..."
-    if ! command -v yay &> /dev/null; then
-        echo_info "Installing yay ..."
-        git clone https://aur.archlinux.org/yay.git /tmp/yay
-        cd /tmp/yay
-        makepkg -si --noconfirm &> /dev/null
+    if ! command -v paru &> /dev/null; then
+        echo_info "Installing paru ..."
+        git clone https://aur.archlinux.org/paru.git /tmp/paru
+        cd /tmp/paru
+        makepkg -si --noconfirm
         cd -
-        rm -rf /tmp/yay
+        rm -rf /tmp/paru
     fi
 
     echo_done
@@ -58,8 +62,8 @@ migrate_shell(){
 
 migrate_fonts(){
     echo_info "Installing fonts ..."
-    sudo cp fonts/* /usr/share/fonts/ &> /dev/null
-    sudo fc-cache -fv &> /dev/null
+    sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd ttf-meslo-nerd
+    sudo fc-cache
 
     echo_done
 }
@@ -97,11 +101,11 @@ migrate_omz(){
     echo_done
 }
 
-migrate_vscode(){
+install_vscode(){
     echo_info "Installing Visual Studio Code ..."
     if ! command -v code &> /dev/null; then
         echo_info "Installing Visual Studio Code ..."
-        yay -S --noconfirm visual-studio-code-bin &> /dev/null
+        paru -S --noconfirm visual-studio-code-bin
     fi
 
     echo_done
@@ -109,11 +113,9 @@ migrate_vscode(){
 
 migrate_ghostty() {
     echo_info "Installing Ghostty ..."
-    if ! command -v ghostty &> /dev/null; then
-        echo_info "Installing Ghostty ..."
-        yay -S --noconfirm ghostty &> /dev/null
-    fi
-    
+    sudo rm -rf $HOME/.config/ghostty
+    ln -s $(pwd)/ghostty $HOME/.config/ghostty
+
     echo_done
 }
 
@@ -122,16 +124,6 @@ migrate_git(){
     echo_info "Migrating git configuration ..."
     sudo rm -rf $HOME/.gitconfig
     ln -s $(pwd)/.gitconfig $HOME/.gitconfig
-
-    echo_done
-}
-
-migrate_secrets(){
-    echo_info "Decrypting Secrets ..."
-    gpg secrets.sh.gpg
-
-    sudo rm -rf $HOME/secrets.sh
-    ln -s $(pwd)/secrets.sh $HOME/.secrets.sh
 
     echo_done
 }
@@ -150,5 +142,14 @@ migrate_vim(){
 
     ln -s $(pwd)/.vimrc $HOME/.vimrc
 
+    echo_done
+}
+
+migrate_theme(){
+    echo_info "Migrating terminal theme ..."
+    paru -S --noconfirm dracula-gtk-theme dracula-icon-theme
+    gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+    gsettings set org.gnome.desktop.interface icon-theme "Dracula"
+    gsettings set org.gnome.shell.extensions.user-theme name "Dracula"
     echo_done
 }

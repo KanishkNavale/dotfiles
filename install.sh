@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source scripts/modules.sh
+source automate.sh
 
 confirm_and_run() {
     local cmd="$1"
@@ -17,7 +17,6 @@ confirm_and_run() {
 
 confirm_and_run prequisites
 confirm_and_run migrate_git
-confirm_and_run migrate_secrets
 confirm_and_run migrate_shell
 confirm_and_run migrate_fonts
 confirm_and_run migrate_omz

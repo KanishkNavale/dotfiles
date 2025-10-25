@@ -136,9 +136,8 @@ alias sa="source .venv/bin/activate"
 alias cd="z"
 alias dcd="z ../.."
 alias y="yazi"
-
-# App. Keys
-source $HOME/.secrets.sh
+alias yay="paru"
+alias cat="bat --paging=always"
 
 # Custom Paths
 export EDITOR="vim"
@@ -148,3 +147,6 @@ export PATH=$PATH:/var/lib/snapd/snap/bin
 
 # Custom Evals.
 eval "$(zoxide init zsh)"
+
+# Pokemon
+pokego --random 1-2
