@@ -6,7 +6,7 @@ confirm_and_run() {
     local cmd="$1"
     echo_info "Ready to run '$cmd'"
     read -n1 -p "Run '$cmd'? [y/N]: " reply
-    echo # move to a new line after single keypress
+    echo
     if [[ "$reply" =~ ^[Yy]$ ]]; then
         echo_info "Executing '$cmd'..."
         $cmd
@@ -23,5 +23,6 @@ confirm_and_run migrate_omz
 confirm_and_run migrate_vscode
 confirm_and_run migrate_ghostty
 confirm_and_run migrate_vim
+confirm_and_run migrate_grub
 
 exec zsh

@@ -149,4 +149,4 @@ export PATH=$PATH:/var/lib/snapd/snap/bin
 eval "$(zoxide init zsh)"
 
 # Pokemon
-pokego --random 1-2
+pokego --random 1

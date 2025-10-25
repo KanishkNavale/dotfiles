@@ -20,6 +20,7 @@ prequisites(){
 
     echo_info "Installing general prequisites ..."
     sudo pacman -S --noconfirm \
+    os-prober \
     python-virtualenv \
     python-pip \
     python-poetry \
@@ -151,5 +152,20 @@ migrate_theme(){
     gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
     gsettings set org.gnome.desktop.interface icon-theme "Dracula"
     gsettings set org.gnome.shell.extensions.user-theme name "Dracula"
+    echo_done
+}
+
+migrate_grub(){
+    echo_info "Migrating GRUB configuration ..."
+    sudo cp -r $(pwd)/dedsec /boot/grub/themes/
+    
+    sudo cp /etc/default/grub /etc/default/grub.bak
+    sudo cp $(pwd)/grub /etc/default/
+
+    sudo cp /etc/grub.d/10_linux /etc/grub.d/10_linux.bak
+    sudo cp $(pwd)/10_linux /etc/grub.d/
+
+    sudo grub-mkconfig -o /boot/grub/grub.cfg
+
     echo_done
 }
