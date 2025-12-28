@@ -138,6 +138,7 @@ alias dcd="z ../.."
 alias y="yazi"
 alias yay="paru"
 alias cat="bat --paging=always"
+alias nano="vim"
 
 # Custom Paths
 export EDITOR="vim"

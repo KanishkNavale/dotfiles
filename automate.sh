@@ -36,6 +36,9 @@ prequisites(){
     zoxide \
     ghostty \
     bat \
+    nvidia-open \
+    nvidia-open-lts \
+    cuda \
 
     echo_info "Installing AUR helper ..."
     if ! command -v paru &> /dev/null; then
