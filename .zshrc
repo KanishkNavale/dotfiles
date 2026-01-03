@@ -139,6 +139,8 @@ alias y="yazi"
 alias yay="paru"
 alias cat="bat --paging=always"
 alias nano="vim"
+alias man="tldr"
+alias sudo='sudo '
 
 # Custom Paths
 export EDITOR="vim"
