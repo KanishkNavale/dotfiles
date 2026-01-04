@@ -162,10 +162,10 @@ migrate_grub(){
     echo_info "Migrating GRUB configuration ..."
     sudo cp -r $(pwd)/dedsec /boot/grub/themes/
     
-    sudo cp /etc/default/grub /etc/default/grub.bak
+    sudo rm -rf /etc/default/grub /etc/default/grub.bak
     sudo cp $(pwd)/grub /etc/default/
 
-    sudo cp /etc/grub.d/10_linux /etc/grub.d/10_linux.bak
+    sudo rm -rf /etc/grub.d/10_linux /etc/grub.d/10_linux.bak
     sudo cp $(pwd)/10_linux /etc/grub.d/
 
     sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -191,4 +191,19 @@ migrate_docker(){
 
     echo_info "Docker installation and setup complete!"
     echo_info "You may need to log out and back in for group changes to take effect."
+}
+
+migrate_additionals(){
+    echo_info "Migrating tealdeer ..."
+    yay -S --noconfirm tealdeer
+    tldr --update
+    echo_done
+
+    echo_info "Migrating pokego ..."
+    yay -S --noconfirm pokego-git
+    echo_done
+
+    echo_info "Migrating thermald & tlp ..."
+    sudo pacman -S thermald tlp
+    sudo systemctl enable thermald.service tlp.service
 }

@@ -25,5 +25,6 @@ confirm_and_run migrate_ghostty
 confirm_and_run migrate_vim
 confirm_and_run migrate_grub
 confirm_and_run migrate_docker
+confirm_and_run migrate_additionals
 
 exec zsh
