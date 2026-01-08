@@ -204,6 +204,6 @@ migrate_additionals(){
     echo_done
 
     echo_info "Migrating thermald & tlp ..."
-    sudo pacman -S thermald tlp
+    sudo pacman -S thermald tlp --noconfirm
     sudo systemctl enable thermald.service tlp.service
 }
