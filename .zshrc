@@ -140,6 +140,7 @@ alias yay="paru"
 alias cat="bat --paging=always"
 alias nano="vim"
 alias man="tldr"
+alias gc="git cmt"
 alias sudo='sudo '
 
 # Custom Paths
