@@ -9,4 +9,4 @@
     famend = !git add . && git commit --amend --no-edit && git push -f
 	undo = reset --soft HEAD~1
 	amend = !git add . && git commit --amend --no-edit
-    cmt = "!f() { git add . && STATS=$(git diff --cached --numstat | awk '{a+=$1; r+=$2} END {printf \"+%d +%d\", a, r}') && git commit -m \"$1\\n\\nAs on $(date '+%Y-%m-%d %H:%M:%S'), lines updated $STATS\"; }; f"
+    cmt = "!f() { git add . && STATS=$(git diff --cached --numstat | awk '{a+=$1; r+=$2} END {printf \"+%d +%d\", a, r}') && git commit -m \"$1\" -m \"As on $(date '+%Y-%m-%d %H:%M:%S'), lines updated $STATS\"; }; f"
