@@ -117,9 +117,37 @@ install_vscode(){
 
 migrate_ghostty() {
     echo_info "Installing Ghostty ..."
-    sudo rm -rf $HOME/.config/ghostty
-    ln -s $(pwd)/ghostty $HOME/.config/ghostty
+    sudo rm -rf "$HOME/.config/ghostty"
+    ln -s "$(pwd)/ghostty" "$HOME/.config/ghostty"
 
+    GHOSTTY_DESKTOP=$(find /usr/share/applications -name "*ghostty*" 2>/dev/null | head -1)
+
+    if [ -z "$GHOSTTY_DESKTOP" ]; then
+        GHOSTTY_DESKTOP=$(find "$HOME/.local/share/applications" -name "*ghostty*" 2>/dev/null | head -1)
+    fi
+
+    if [ -z "$GHOSTTY_DESKTOP" ]; then
+        echo_error "Ghostty desktop file not found"
+        return 1
+    fi
+
+    echo_info "Found Ghostty desktop file at: $GHOSTTY_DESKTOP"
+    mkdir -p "$HOME/.local/share/applications"
+
+    LOCAL_DESKTOP="$HOME/.local/share/applications/com.mitchellh.ghostty.desktop"
+    cp "$GHOSTTY_DESKTOP" "$LOCAL_DESKTOP"
+
+    ICON_PATH="$(pwd)/ghostty/icon.png"
+    sed -i "s|^Icon=.*|Icon=${ICON_PATH}|" "$LOCAL_DESKTOP"
+
+    if grep -qF "Icon=${ICON_PATH}" "$LOCAL_DESKTOP"; then
+        echo_info "Successfully updated Ghostty desktop entry icon configuration"
+    else
+        echo_error "Failed to update desktop file icon"
+        return 1
+    fi
+
+    update-desktop-database "$HOME/.local/share/applications"
     echo_done
 }
 

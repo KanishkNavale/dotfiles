@@ -154,3 +154,6 @@ eval "$(zoxide init zsh)"
 
 # Pokemon
 pokego --random 1
+
+# Bun
+export PATH="$HOME/.bun/bin:$PATH"
